@@ -1,0 +1,110 @@
+*MarkComplete.txt*      Insert mode completion for matches of mark patterns.
+
+		       MARK COMPLETE    by Ingo Karkat
+							    *MarkComplete.vim*
+description			|MarkComplete-description|
+usage				|MarkComplete-usage|
+installation			|MarkComplete-installation|
+configuration			|MarkComplete-configuration|
+limitations			|MarkComplete-limitations|
+known problems			|MarkComplete-known-problems|
+todo				|MarkComplete-todo|
+history				|MarkComplete-history|
+
+==============================================================================
+DESCRIPTION					    *MarkComplete-description*
+
+This plugin offers completions for mark.vim pattern, either matches for all
+mark pattern or for a particular mark.
+
+SEE ALSO								     *
+- Check out the |CompleteHelper.vim| plugin page (vimscript #3914) for a full
+  list of insert mode completions powered by it.
+
+==============================================================================
+USAGE							  *MarkComplete-usage*
+						    *i_CTRL-X_#* *i_CTRL-X_g#*
+CTRL-X #		Find matches for any mark pattern.
+CTRL-X g#		Like above, but instead of offering matches as
+			completion candidates, find common substrings and turn
+			all matches into a Bash-like Brace Expression.
+								  *c_CTRL-R_#*
+CTRL-R #		Insert first match for any mark pattern into the
+			command-line.
+
+==============================================================================
+INSTALLATION					   *MarkComplete-installation*
+
+The code is hosted in a Git repo at
+    https://github.com/inkarkat/vim-MarkComplete
+You can use your favorite plugin manager, or "git clone" into a directory used
+for Vim |packages|. Releases are on the "stable" branch, the latest unstable
+development snapshot on "master".
+
+This script is also packaged as a |vimball|. If you have the "gunzip"
+decompressor in your PATH, simply edit the *.vmb.gz package in Vim; otherwise,
+decompress the archive first, e.g. using WinZip. Inside Vim, install by
+sourcing the vimball or via the |:UseVimball| command. >
+    vim MarkComplete*.vmb.gz
+    :so %
+To uninstall, use the |:RmVimball| command.
+
+DEPENDENCIES					   *MarkComplete-dependencies*
+
+- Requires Vim 7.0 or higher.
+- Requires the |mark.vim| plugin (vimscript #2666), version 3.2.1 or higher.
+- Requires the |PatternComplete.vim| plugin (vimscript #4248), version 1.20 or
+  higher.
+
+==============================================================================
+CONFIGURATION					  *MarkComplete-configuration*
+
+For a permanent configuration, put the following commands into your |vimrc|:
+
+		     |b:PatternComplete_complete| |g:PatternComplete_complete|
+The scope of buffers that will be scanned for completion candidates are
+controlled by this |PatternComplete.vim| configuration (or the 'complete'
+option).
+							  *MarkComplete-remap*
+If you want to use different mappings, map your keys to the
+<Plug>(MarkComplete) mapping targets _before_ sourcing the script (e.g.
+in your |vimrc|): >
+    imap <C-x>& <Plug>(MarkCompleteAll)
+    cmap <C-r>& <Plug>(MarkCompleteAll)
+<					  *g:MarkComplete_EnableBraceMappings*
+If you don't want the mappings that return all matches as a single Bash-like
+Brace Expression, you can disable them all at once via: >
+    let g:MarkComplete_EnableBraceMappings = 0
+Alternatively, you can tweak or disable them all individually, too: >
+    imap <C-x>g& <Plug>(MarkCompleteAllAsBrace)
+<
+==============================================================================
+LIMITATIONS					    *MarkComplete-limitations*
+
+KNOWN PROBLEMS					 *MarkComplete-known-problems*
+
+TODO							   *MarkComplete-todo*
+
+IDEAS							  *MarkComplete-ideas*
+
+CONTRIBUTING					     *MarkComplete-contribute*
+
+Report any bugs, send patches, or suggest features via the issue tracker at
+https://github.com/inkarkat/vim-MarkComplete/issues or email (address below).
+
+==============================================================================
+HISTORY							*MarkComplete-history*
+
+GOAL
+First published version.
+
+0.01	04-Mar-2022
+Started development.
+
+==============================================================================
+Copyright: (C) 2022 Ingo Karkat
+The VIM LICENSE applies to this plugin; see |copyright|.
+
+Maintainer:	Ingo Karkat <ingo@karkat.de>
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:
