@@ -14,8 +14,9 @@ history				|MarkComplete-history|
 ==============================================================================
 DESCRIPTION					    *MarkComplete-description*
 
-This plugin offers completions for mark.vim pattern, either matches for all
-mark pattern or for a particular mark.
+This plugin offers completions for mark.vim patterns, either matches for all
+of them or (through separate mappings) for a particular mark highlight group
+only.
 
 SEE ALSO								     *
 - Check out the |CompleteHelper.vim| plugin page (vimscript #3914) for a full
@@ -74,23 +75,27 @@ This plugin defines numbered completions for the first 9 groups; if you need
 more: >
     let g:MarkComplete_MaxMarkMappingNum = 9
 <
-
-		     |b:PatternComplete_complete| |g:PatternComplete_complete|
 The scope of buffers that will be scanned for completion candidates are
-controlled by this |PatternComplete.vim| configuration (or the 'complete'
-option).
+controlled by the |PatternComplete.vim| configuration (or the 'complete'
+option): |b:PatternComplete_complete| |g:PatternComplete_complete| .
 							  *MarkComplete-remap*
 If you want to use different mappings, map your keys to the
 <Plug>(MarkComplete) mapping targets _before_ sourcing the script (e.g.
 in your |vimrc|): >
-    imap <C-x>& <Plug>(MarkCompleteAll)
-    cmap <C-r>& <Plug>(MarkCompleteAll)
+    imap <C-x>&  <Plug>(MarkCompleteAll)
+    cmap <C-r>&  <Plug>(MarkCompleteAll)
+
+    imap <C-x>1& <Plug>(MarkComplete1)
+    cmap <C-r>1& <Plug>(MarkComplete1)
+    [...]
 <					  *g:MarkComplete_EnableBraceMappings*
 If you don't want the mappings that return all matches as a single Bash-like
 Brace Expression, you can disable them all at once via: >
     let g:MarkComplete_EnableBraceMappings = 0
 Alternatively, you can tweak or disable them all individually, too: >
-    imap <C-x>g& <Plug>(MarkCompleteAllAsBrace)
+    imap <C-x>g&  <Plug>(MarkCompleteAllAsBrace)
+    imap <C-x>g1& <Plug>(MarkComplete1AsBrace)
+    [...]
 <
 ==============================================================================
 LIMITATIONS					    *MarkComplete-limitations*

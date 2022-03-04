@@ -1,6 +1,8 @@
 " MarkComplete.vim: Insert mode completion for matches of mark patterns.
 "
 " DEPENDENCIES:
+"   - PatternComplete.vim plugin
+"   - mark.vim plugin
 "
 " Copyright: (C) 2022 Ingo Karkat
 "   The VIM LICENSE applies to this script; see ':help copyright'.
