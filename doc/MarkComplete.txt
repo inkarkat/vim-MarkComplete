@@ -28,9 +28,16 @@ CTRL-X #		Find matches for any mark pattern.
 CTRL-X g#		Like above, but instead of offering matches as
 			completion candidates, find common substrings and turn
 			all matches into a Bash-like Brace Expression.
+						  *i_CTRL-X_1#* *i_CTRL-X_g1#*
+CTRL-X 1#		Find matches for the mark pattern belonging to
+CTRL-X g1#		highlight group 1.
+CTRL-X 2#, ...
 								  *c_CTRL-R_#*
 CTRL-R #		Insert first match for any mark pattern into the
 			command-line.
+								 *c_CTRL-R_1#*
+CTRL-R 1#		Insert first match for the mark pattern belonging to
+CTRL-R 2#, ...		highlight group 1 into the command-line.
 
 ==============================================================================
 INSTALLATION					   *MarkComplete-installation*
@@ -60,6 +67,13 @@ DEPENDENCIES					   *MarkComplete-dependencies*
 CONFIGURATION					  *MarkComplete-configuration*
 
 For a permanent configuration, put the following commands into your |vimrc|:
+
+					    *g:MarkComplete_MaxMarkMappingNum*
+The number of mark.vim highlight groups depends on the configured palette.
+This plugin defines numbered completions for the first 9 groups; if you need
+more: >
+    let g:MarkComplete_MaxMarkMappingNum = 9
+<
 
 		     |b:PatternComplete_complete| |g:PatternComplete_complete|
 The scope of buffers that will be scanned for completion candidates are
